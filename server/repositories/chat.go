@@ -9,6 +9,8 @@ type ChatRepository interface {
 	CreateChat(chat models.Chat) (models.Chat, error)
 	GetChat(ID int) (models.Chat, error)
 	FindChats() ([]models.Chat, error)
+	FindChatsByRoomID(roomID int) ([]models.Chat, error)
+	GetChatByRoomID(roomID int, chatID int) (models.Chat, error)
 	UpdateChat(chat models.Chat) (models.Chat, error)
 	DeleteChat(chat models.Chat, ID int) (models.Chat, error)
 }
@@ -35,6 +37,20 @@ func (r *repository) FindChats() ([]models.Chat, error) {
 	err := r.db.Find(&chats).Error
 
 	return chats, err
+}
+
+func (r *repository) FindChatsByRoomID(roomID int) ([]models.Chat, error) {
+	var chats []models.Chat
+	err := r.db.Preload("Room").Where("room_id=?", roomID).Find(&chats).Error
+
+	return chats, err
+}
+
+func (r *repository) GetChatByRoomID(roomID int, chatID int) (models.Chat, error) {
+	var chat models.Chat
+	err := r.db.Preload("Room").Where("room_id=? AND chat_id=?", roomID, chatID).First(&chat).Error
+
+	return chat, err
 }
 
 func (r *repository) UpdateChat(chat models.Chat) (models.Chat, error) {
