@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { API } from "../config/Api";
 import { useMutation, useQuery } from "react-query";
 import { alertCreateRoomFailed, alertCreateRoomSuccess } from "./alert/Alert";
+import Navbar from "./Navbar";
 
 function Room() {
   document.title = "Room List"
@@ -61,16 +62,8 @@ function Room() {
   return (
     <div className="md:flex md:justify-center bg-base-100 md:h-screen">
       <div className="w-full md:w-[800px] bg-base-200">
-        <div className="flex justify-center">
-          <div className="m-3 w-[640px] flex justify-end pr-4 items-center">
-            <h1 className="mr-3 text-lg">Thxrhmn</h1>
-            <div className="avatar online">
-              <div className="w-12 rounded-full">
-                <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-              </div>
-            </div>
-          </div>
-        </div>
+
+        <Navbar />
 
         <div className="md:m-5">
           <h1 className="text-3xl text-center font-bold text-white">Room List</h1>
@@ -105,7 +98,7 @@ function Room() {
             {roomList?.map((item) => (
               <Link to={`${item.id}`} key={item.id}>
                 <div className="mx-3 md:m-0 md:w-[200px] bg-gray-800 h-[150px] rounded-md flex justify-center items-center outline-slate-400 outline-2 outline hover:scale-105 cursor-pointer">
-                  <h1 className="text-2xl text-white font-semibold">{item?.name}</h1>
+                  <h1 className="text-2xl text-white font-semibold mx-4 text-center">{item?.name}</h1>
                 </div>
               </Link>
             ))}

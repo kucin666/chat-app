@@ -67,13 +67,36 @@ function RoomChat() {
     refetch()
   }, [valueMessage])
 
+  //format date
+  function formatDateToID(inputDate){
+    // const inputDate = "2023-06-22T12:27:58.856897Z";
+    const date = new Date(inputDate);
+
+    const options = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      timeZone: "Asia/Jakarta"
+    };
+
+    const formatter = new Intl.DateTimeFormat("id-ID", options);
+    const formattedDate = formatter.format(date);
+
+    console.log(formattedDate);
+    return formattedDate.replace(".", ":");
+  }
+  
+
   return (
     <div className="flex justify-center bg-base-100">
       <div className="w-full md:w-[800px] bg-base-200">
         <div className="md:mx-5">
           <div className="flex items-center justify-between md:justify-normal">
             <div className="w-[30%] md:w-[10%]">
-              <Link to={`http://localhost:5173/room`}>
+              <Link to={`https://chat.thxrhmn.me/room`}>
                 <button className="btn btn-sm">Back</button>
               </Link>
             </div>
@@ -106,9 +129,10 @@ function RoomChat() {
                         </div>
                         <div className="chat-header">
                           {item?.user?.name}
-                          <time className="text-xs opacity-50 ml-1">12:45</time>
+                          {/* <time className="text-xs opacity-50 ml-1">12:45</time> */}
                         </div>
                         <div className="chat-bubble">{item?.title}</div>
+                        <div className="chat-footer opacity-50 text-[11px]">{formatDateToID(item?.created_at)}</div>
                       </div>
                     ): 
                     (
@@ -120,9 +144,10 @@ function RoomChat() {
                         </div>
                         <div className="chat-header">
                           {item?.user?.name}
-                          <time className="text-xs opacity-50 ml-1">12:46</time>
+                          {/* <time className="text-xs opacity-50 ml-1">12:46</time> */}
                         </div>
                         <div className="chat-bubble">{item?.title}</div>
+                        <div className="chat-footer opacity-50 text-[11px]">{formatDateToID(item?.created_at)}</div>
                       </div>
                     )
                   }
