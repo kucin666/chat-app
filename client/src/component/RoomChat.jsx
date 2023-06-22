@@ -73,7 +73,7 @@ function RoomChat() {
         <div className="md:mx-5">
           <div className="flex items-center justify-between md:justify-normal">
             <div className="w-[30%] md:w-[10%]">
-              <Link to={`http://localhost:5173/room`}>
+              <Link to={`https://chat.thxrhmn.me/room`}>
                 <button className="btn btn-sm">Back</button>
               </Link>
             </div>
