@@ -105,7 +105,7 @@ function Room() {
             {roomList?.map((item) => (
               <Link to={`${item.id}`} key={item.id}>
                 <div className="mx-3 md:m-0 md:w-[200px] bg-gray-800 h-[150px] rounded-md flex justify-center items-center outline-slate-400 outline-2 outline hover:scale-105 cursor-pointer">
-                  <h1 className="text-2xl text-white font-semibold">{item?.name}</h1>
+                  <h1 className="text-2xl text-white font-semibold mx-4 text-center">{item?.name}</h1>
                 </div>
               </Link>
             ))}
