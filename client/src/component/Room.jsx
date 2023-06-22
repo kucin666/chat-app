@@ -101,10 +101,10 @@ function Room() {
         </dialog>
         
         <div className="flex justify-center">
-          <div className="w-full flex flex-col md:flex-wrap gap-5 md:w-[640px]">
+          <div className="w-full flex flex-col md:flex-row md:flex-wrap gap-5 md:w-[640px]">
             {roomList?.map((item) => (
               <Link to={`${item.id}`} key={item.id}>
-                <div className="mx-3 md:w-[200px] bg-gray-800 h-[150px] rounded-md flex justify-center items-center outline-slate-400 outline-2 outline hover:scale-105 cursor-pointer">
+                <div className="mx-3 md:m-0 md:w-[200px] bg-gray-800 h-[150px] rounded-md flex justify-center items-center outline-slate-400 outline-2 outline hover:scale-105 cursor-pointer">
                   <h1 className="text-2xl text-white font-semibold">{item?.name}</h1>
                 </div>
               </Link>
