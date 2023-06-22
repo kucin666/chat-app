@@ -44,7 +44,7 @@ func (h *handlerAuth) Register(c echo.Context) error {
 	}
 
 	// default avatar img
-	profileImg := "https://i.pinimg.com/originals/47/4f/5f/474f5fa00f60fb5c2e47c9dfcd7b1593.jpgs"
+	profileImg := "https://i.pinimg.com/originals/47/4f/5f/474f5fa00f60fb5c2e47c9dfcd7b1593.jpg"
 
 	user := models.User{
 		Name:         request.Name,
