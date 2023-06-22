@@ -41,7 +41,7 @@ func (r *repository) FindChats() ([]models.Chat, error) {
 
 func (r *repository) FindChatsByRoomID(roomID int) ([]models.Chat, error) {
 	var chats []models.Chat
-	err := r.db.Preload("Room").Where("room_id=?", roomID).Find(&chats).Error
+	err := r.db.Preload("Room").Preload("User").Where("room_id=?", roomID).Find(&chats).Error
 
 	return chats, err
 }

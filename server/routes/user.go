@@ -14,5 +14,6 @@ func UserRoutes(e *echo.Group) {
 
 	e.GET("/user/:id", h.GetUser)
 	e.GET("/users", h.FindUsers)
+	e.GET("/user-by-login", middleware.Auth(h.GetUserIDByLogin))
 	e.DELETE("/user/:id", middleware.Auth(h.DeleteUser))
 }
